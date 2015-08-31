@@ -36,9 +36,14 @@ ___test_test_apidb_backend_LDADD+=libcgimap_staticxml.la
 endif
 
 ___map_LDADD+=libcgimap_core.la @BOOST_PROGRAM_OPTIONS_LIB@ @BOOST_FILESYSTEM_LIB@ @BOOST_SYSTEM_LIB@ @LIBPQXX_LIBS@
-___test_test_core_LDADD+=libcgimap_core.la @BOOST_PROGRAM_OPTIONS_LIB@ @BOOST_FILESYSTEM_LIB@ @BOOST_SYSTEM_LIB@
+___test_test_core_LDADD+=libcgimap_core.la @BOOST_PROGRAM_OPTIONS_LIB@ @BOOST_FILESYSTEM_LIB@ @BOOST_DATE_TIME_LIB@ @BOOST_SYSTEM_LIB@
+
 check_PROGRAMS+=../test/test_parse_id_list
 ___test_test_parse_id_list_LDADD=libcgimap_core.la @BOOST_PROGRAM_OPTIONS_LIB@ @BOOST_FILESYSTEM_LIB@ @BOOST_SYSTEM_LIB@ @LIBPQXX_LIBS@
+
+check_PROGRAMS+=../test/test_parse_time
+___test_test_parse_time_LDADD=libcgimap_core.la @BOOST_PROGRAM_OPTIONS_LIB@ @BOOST_FILESYSTEM_LIB@ @BOOST_DATE_TIME_LIB@ @BOOST_SYSTEM_LIB@ @LIBPQXX_LIBS@
+
 if ENABLE_APIDB
 ___test_test_apidb_backend_LDADD+=libcgimap_core.la @BOOST_PROGRAM_OPTIONS_LIB@ @BOOST_FILESYSTEM_LIB@ @BOOST_SYSTEM_LIB@ @LIBPQXX_LIBS@
 endif
@@ -52,6 +57,9 @@ ___test_test_core_SOURCES=\
 
 ___test_test_parse_id_list_SOURCES=\
 	../test/test_parse_id_list.cpp
+
+___test_test_parse_time_SOURCES=\
+	../test/test_parse_time.cpp
 
 if ENABLE_APIDB
 ___test_test_apidb_backend_SOURCES=\
@@ -81,6 +89,7 @@ libcgimap_core_la_SOURCES=\
 	request_helpers.cpp \
 	router.cpp \
 	routes.cpp \
+	time.cpp \
 	xml_formatter.cpp \
 	xml_writer.cpp \
 	zlib.cpp
