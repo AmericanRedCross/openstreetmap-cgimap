@@ -77,6 +77,13 @@ struct changeset_info {
   size_t comments_count;
 };
 
+struct changeset_comment_info {
+  osm_id_t author_id;
+  std::string body;
+  std::string created_at;
+  std::string author_display_name;
+};
+
 struct member_info {
   element_type type;
   osm_id_t ref;
@@ -86,6 +93,7 @@ struct member_info {
 typedef std::list<osm_id_t> nodes_t;
 typedef std::list<member_info> members_t;
 typedef std::list<std::pair<std::string, std::string> > tags_t;
+typedef std::vector<changeset_comment_info> comments_t;
 
 /**
  * Base type for different output formats. Hopefully this is general
@@ -139,6 +147,8 @@ struct output_formatter {
   // output a single changeset.
   virtual void write_changeset(const changeset_info &elem,
                                const tags_t &tags,
+                               bool include_comments,
+                               const comments_t &comments,
                                const boost::posix_time::ptime &now) = 0;
 
   // flush the current state
