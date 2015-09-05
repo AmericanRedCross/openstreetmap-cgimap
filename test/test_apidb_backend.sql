@@ -16,3 +16,10 @@ VALUES (1,       0,       0, 1, true,  '2013-11-14T02:10:00Z', 3221225472, 1),
        (2, 1000000, 1000000, 1, true,  '2013-11-14T02:10:01Z', 3221227032, 1),
        (3,       0,       0, 2, false, '2015-03-02T18:27:00Z', 3221225472, 2),
        (4,       0,       0, 4, true,  '2015-03-02T19:25:00Z', 3221225472, 1);
+
+-- update the number of edits
+UPDATE changesets
+  SET num_changes = (
+    SELECT count(*)
+    FROM current_nodes
+    WHERE changeset_id = changesets.id);
