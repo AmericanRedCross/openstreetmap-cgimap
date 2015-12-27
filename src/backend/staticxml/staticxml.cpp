@@ -447,6 +447,14 @@ struct static_data_selection : public data_selection {
     }
   }
 
+  virtual void drop_nodes() {
+    m_nodes.clear();
+  }
+
+  virtual void drop_ways() {
+    m_ways.clear();
+  }
+
 private:
   boost::shared_ptr<database> m_db;
   std::set<osm_id_t> m_nodes, m_ways, m_relations;

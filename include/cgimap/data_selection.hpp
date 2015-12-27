@@ -82,6 +82,12 @@ public:
   /// select relations which are members of selected relations
   virtual void select_relations_members_of_relations() = 0;
 
+  /// drop any nodes which are in the current selection
+  virtual void drop_nodes() = 0;
+
+  /// drop any ways which are in the current selection
+  virtual void drop_ways() = 0;
+
   /**
    * factory for the creation of data selections. this abstracts away
    * the creation process of transactions, and allows some up-front

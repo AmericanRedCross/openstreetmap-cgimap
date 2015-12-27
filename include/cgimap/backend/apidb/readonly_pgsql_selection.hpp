@@ -42,6 +42,9 @@ public:
   void select_relations_from_relations();
   void select_relations_members_of_relations();
 
+  void drop_nodes();
+  void drop_ways();
+
   /**
    * a factory for the creation of read-only selections, so it
    * can set up prepared statements.
